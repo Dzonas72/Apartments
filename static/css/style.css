@@ -1,0 +1,26 @@
+h1 { color: green}
+h2 { color: red}
+
+
+body {
+    background: url(images/papludimys.png) no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+
+}
+
+.navcolor {
+background-color: rgb(180,200,179);
+}
+.sidebar{
+backgroundcolor: rgba(100,116,118,0,48);
+}
+
+
+.room img {
+    width: 200px;
+    height: 200px;
+    max-width: 100%;
+    max-height: 100%;
+}

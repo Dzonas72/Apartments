@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <head>
+     <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+     </head>
+
+   <body>
+         {% if events %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                          <th scope="col">#</th>
+                          <th scope="col">Room</th>
+                          <th scope="col">Customer</th>
+                          <th scope="col">Persons number</th>
+                          <th scope="col">Since</th>
+                          <th scope="col">Until</th>
+                          <th scope="col">Order status</th>
+                          <th scope="col">Order update</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        {% for event in events %}
+                          <th scope="row">{{ forloop.counter }}</th>
+                          <td>{{ event.room }}</td>
+                          <td>{{ event.customer }}</td>
+                          <td>{{ event.number_persons }}</td>
+                          <td>{{ event.start_time }}</td>
+                          <td>{{ event.end_time }}</td>
+                          <td>{{ event.status }}</td>
+                          <td><a href="{% url 'apartment:order_update' event.id %}">Update</a> </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                </table>
+                <br>
+
+         {% endif %}
+
+
+            <h3>Please check availability of rooms:</h3>
+             <br>
+                <form method="POST" action="">
+                    {% csrf_token %}
+                    {{ form }}
+                    <div class="input-div">
+                        <button type="submit">Check free rooms in apartments</button>
+                    </div>
+                </form>
+
+                <br>
+                <table class="table">
+                <thead>
+                    <tr>
+                      <th scope="col">Items</th>
+                      <th scope="col">Free rooms</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                    {% for room in free_rooms %}
+
+                      <th scope="row">{{ forloop.counter }}</th>
+                      <td>{{ room.identification }}</td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+
+   </body>
+
+{% endblock %}

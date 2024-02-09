@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+        <head>
+         <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+         </head>
+
+        <h2>Cia esame order_add.html</h2>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="OK">
+
+        </form>
+
+{% endblock %}
+
+

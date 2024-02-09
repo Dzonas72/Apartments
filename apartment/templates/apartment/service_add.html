@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <head>
+        <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+    </head>
+    <h2>You can add a new service item:</h2>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="OK">
+
+        </form>
+        <br>
+        <br>
+    <a href="{% url 'apartment:service' %}">Back to services list</a>
+
+{% endblock %}
+

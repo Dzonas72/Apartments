@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <head>
+     <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+     </head>
+
+    <h2>Add new room to the room list:</h2>
+
+    <form action="" method="post" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="OK">
+
+    </form>
+
+{% endblock %}

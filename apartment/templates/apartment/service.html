@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <head>
+        <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+    </head>
+
+    <h1>The sevices items list:</h1>
+
+         {% if services %}
+            <ul>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                          <th scope="col">#</th>
+
+                          <th scope="col">Name</th>
+                          <th scope="col">Price</th>
+                          <th scope="col">Owner</th>
+                          <th scope="col">Update</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        {% for service in services %}
+                          <th scope="row">{{ forloop.counter }}</th>
+
+                          <td>{{ service.service_name }}</td>
+                          <td>{{ service.price }}</td>
+                          <td>{{ service.owner }}</td>
+                          <td><a href="{% url 'apartment:service_update' service.id %}">Update</a> </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+
+            </ul>
+
+        {% else %}
+            <p>No service are available</p>
+        {% endif %}
+
+         <br>
+            <a class="btn btn-primary" href="{% url 'apartment:service_add'%}" role="button">Service add</a>
+
+{% endblock %}

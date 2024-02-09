@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <head>
+     <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+     </head>
+
+    <h2>You can update the the customer details:</h2>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="OK">
+
+    </form>
+
+{% endblock %}

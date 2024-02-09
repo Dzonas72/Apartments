@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <head>
+        <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+    </head>
+    <body>
+        <h3>Room no.{{ room.identification }}</h3>
+        <br>
+        <div class="gallery_room">
+            <img src="{{ room.image.url }}" alt="{{ room.id }}">
+            <br>
+ {{ room.description }}
+            <br>
+            <a href="{% url 'apartment:rooms' %}">Back to Rooms</a>
+
+                <br>
+                <a class="btn btn-primary" href="{% url 'apartment:calendar_view' %}" role="button">Calendar</a>
+
+             </form>
+        </div>
+    </body>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <head>
+    <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+    </head>
+
+        <h1>Do you really want to delete room {{ room_name }} from the room list?</h1>
+        <form action="{% url 'apartment:room_delete' room_id=object %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger" href="{% url 'apartment:rooms' %}" role="button">
+                YES
+                </button>
+        </form>
+             <a class="btn btn-primary" href="{% url 'apartment:rooms' %}" role="button">NO</a>
+
+{% endblock %}

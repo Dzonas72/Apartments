@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <head>
+        <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+    </head>
+
+    <h2>New customer add to the list:</h2>
+
+        <form action="" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="OK">
+
+        </form>
+        <br>
+    <a href="{% url 'apartment:customers' %}">Cancel / Back to the list</a>
+
+{% endblock %}

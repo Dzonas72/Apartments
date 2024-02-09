@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <head>
+        <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+    </head>
+
+    <form method="post" action="{% url 'logout' %}">
+        {% csrf_token %}
+        <button type="submit">logout></button>
+    </form>
+
+    <p>You logged out successfully !</p>
+    <a href="{% url 'login' %}">Login again</a>
+
+{% endblock %}

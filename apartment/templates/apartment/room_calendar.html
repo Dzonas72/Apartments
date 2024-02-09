@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+
+    <head>
+     <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+     </head>
+
+    <h1>Room reservation page</h1>
+
+    {{ calendar }}
+    <div class="clearfix">
+        <a class="btn btn-info left" href="{% url 'apartment:calendar_view' %}?{{ prev_month }}"> Previous Month </a>
+        <a class="btn btn-info right" href="{% url 'apartment:calendar_view' %}?{{ next_month }}"> Next Month </a>
+        <br>
+        <br>
+        <a class="btn btn-info left" href="{% url 'apartment:event' %}"> Make room reservation </a>
+        <a class="btn btn-primary" href="{% url 'apartment:rooms' %}" role="button">Back</a>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <link rel="stylesheet"  href="{% static 'css/style.css' %}">
+
+        {% if user.is_authenticated %}
+        <h2>{{ user.get_username }} is connected !</h2>
+
+          <form action="/add" method="post">
+              {% csrf_token %}
+              {{ form }}
+
+          </form>
+
+        {% endif %}
+
+
+{% endblock %}

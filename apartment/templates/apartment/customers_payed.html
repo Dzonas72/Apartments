@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <head>
+        <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+    </head>
+        <h1>Information about customer's expenses:</h1>
+        <br>
+        <a class="btn btn-primary" href="{% url 'apartment:customers' %}" role="button">Back</a>
+        <ul>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Customer</th>
+                    <th scope="col">How many times</th>
+                    <th scope="col">What services used</th>
+                    <th scope="col">How much payed totally</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ customer.last_name }} , {{ customer }}</td>
+                    <td>{{ count_payment }}</td>
+                    <td>{{ services }}</td>
+                    <td>{{ money }}</td>
+
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        </ul>
+
+{% endblock %}

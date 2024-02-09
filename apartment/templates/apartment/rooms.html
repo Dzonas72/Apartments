@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+    <head>
+        <link rel="stylesheet" href="{% static 'css/new.css' %}" />
+    </head>
+
+    {% if page_obj %}
+        <table class="table">
+            <thead>
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Identification</th>
+                <th scope="col">Rooms</th>
+                <th scope="col">Beds</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                {% for room in page_obj %}
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td>{{ room.identification }}</td>
+                    <td>{{ room.rooms }}</td>
+                    <td>{{ room.beds }}</td>
+                    <td><a href="{% url 'apartment:room_update' pk=room.id %}">Update</a> </td>
+                    <td><a href="{% url 'apartment:room_delete' room.id %}">Delete</a> </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+            <p>No rooms are available</p>
+        {% endif %}
+        <br>
+        <br>
+        <a class="btn btn-primary" href="{% url 'apartment:room_add' %}" role="button">Add room</a>
+        <br>
+        <br>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+        <br>
+        <div class="gallery">
+            {% for room in page_obj %}
+                <div class="room">
+                    <img src="{{ room.image.url }}" width="120"/>
+                    <p>{{ room.description }}</p>
+                    <p><a href="{% url 'apartment:room' room.id %}">{{ room }}</a></p>
+                </div>
+            {% endfor %}
+        </div>
+
+{% endblock %}
